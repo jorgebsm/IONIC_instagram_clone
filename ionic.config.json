@@ -1,0 +1,7 @@
+{
+  "name": "vlupp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,33 @@
+<ion-header no-border>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="flame"></ion-icon>
+    </ion-buttons>
+    <ion-title>{{ namePage }}</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+
+  <!-- Refresher -->
+
+  <ion-refresher slot="fixed" (ionRefresh)="reload($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Posts -->
+  <app-posts-list [posts]="posts"></app-posts-list>
+
+  <!-- Infinite Scroll -->
+  <ion-infinite-scroll
+                    [disabled]="!habilitado"
+                    threshold="150px"
+                    (ionInfinite)="siguientes($event)"
+                    id="infinite-scroll">
+    <ion-infinite-scroll-content loading-spinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
