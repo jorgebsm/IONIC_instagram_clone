@@ -8,7 +8,6 @@ import { PostsPageRoutingModule } from './posts-routing.module';
 
 import { PostsPage } from './posts.page';
 import { ComponentsModule } from 'src/app/components/components.module';
-import { TabComponent } from 'src/app/components/tab/tab.component';
 
 @NgModule({
   imports: [
@@ -18,6 +17,6 @@ import { TabComponent } from 'src/app/components/tab/tab.component';
     PostsPageRoutingModule,
     ComponentsModule
   ],
-  declarations: [PostsPage, TabComponent]
+  declarations: [PostsPage]
 })
 export class PostsPageModule {}
