@@ -13,7 +13,7 @@ const API = environment.API;
 export class UsersService {
 
   token: string = null;
-  usuario: Usuario = {};
+  private usuario: Usuario = {};
   
   constructor( private http: HttpClient,
                private storage: Storage,
@@ -62,6 +62,41 @@ export class UsersService {
 
   }
 
+  actualizarUsuario( usuario: Usuario ) {    
+
+    const headers = new HttpHeaders({
+      'x-token': this.token
+    });
+
+    return new Promise( resolve => {
+
+      this.http.post(`${ API }/users/update`, usuario, { headers } ).subscribe(
+        res => {
+  
+          if ( res['ok'] ) {
+            this.saveToken( res['token'] );
+            resolve(true);
+          } else {
+            resolve(false);
+          }
+          
+        }
+      );
+
+    });
+
+  }
+
+  getUsuario() {    
+
+    if ( !this.usuario._id ) {      
+      this.validaToken();
+    }
+
+    return { ...this.usuario };
+
+  }
+
   async saveToken( token: string ) {
     this.token = token;
     await this.storage.set('token', token);
@@ -77,11 +112,10 @@ export class UsersService {
 
     await this.cargarToken();
 
-    if ( !this.token ) {
+    if ( !this.token ) {      
       this.navCtrl.navigateRoot('/login');
       return Promise.resolve(false);
     }
-
 
     return new Promise<boolean>( resolve => {
 
