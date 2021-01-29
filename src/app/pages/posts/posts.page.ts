@@ -21,6 +21,14 @@ export class PostsPage implements OnInit {
 
     this.siguientes();
 
+    this.postsService.nuevoPost.subscribe(
+      post => {
+        console.log(post);
+        
+        this.posts.unshift( post );
+      }
+    );
+
   }
 
   reload( event ) {

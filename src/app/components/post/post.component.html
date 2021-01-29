@@ -13,6 +13,13 @@
 
   </ion-item>
 
+  <ion-item lines="none">
+    <ion-label text-wrap>
+      {{ post.message }}
+    </ion-label>
+  </ion-item>
+  
+
   <ion-slides pager="true">
     <ion-slide class="image-slide" [style]=" img1 | domSanitizer "></ion-slide>
     <ion-slide class="image-slide" [style]=" img2 | domSanitizer "></ion-slide>
@@ -21,16 +28,12 @@
 
   <!-- mapa -->
 
-  <ion-item lines="none">
-    <ion-icon slot="start" name="heart-outline"></ion-icon>
-    <!-- <ion-icon center name="hand-right-outline"></ion-icon> -->
-    <ion-icon slot="end" name="paper-plane-outline"></ion-icon>
-  </ion-item>
+  <!-- <app-map [coords]="post.coords"></app-map> -->
 
   <ion-item lines="none">
-    <ion-label text-wrap>
-      {{ post.message }}
-    </ion-label>
+    <ion-icon slot="start" name="heart-outline"></ion-icon>
+    <ion-icon center name="hand-right-outline"></ion-icon>
+    <ion-icon slot="end" name="paper-plane-outline"></ion-icon>
   </ion-item>
 
 </div>

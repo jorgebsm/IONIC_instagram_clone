@@ -22,6 +22,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule),
     canLoad: [ UsuarioGuard ]
   },
+  {
+    path: 'add-post',
+    loadChildren: () => import('./pages/add-post/add-post.module').then( m => m.AddPostPageModule)
+  },
   // {
   //   path: 'posts',
   //   loadChildren: () => import('./pages/posts/posts.module').then( m => m.PostsPageModule),
